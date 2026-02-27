@@ -1,0 +1,259 @@
+@import url('https://fonts.googleapis.com/css2?family=Bangers&family=Comic+Neue:wght@400;700&family=Permanent+Marker&display=swap');
+@import "tailwindcss";
+
+/* ============================================
+   COMIC SCROLLYTELLING — GLOBAL STYLES
+   Spider-Verse inspired + Apple cinematic
+   ============================================ */
+
+:root {
+  /* Comic palette */
+  --comic-black: #0a0a0a;
+  --comic-white: #f5f0e8;
+  --comic-yellow: #ffe156;
+  --comic-red: #ff3b4a;
+  --comic-blue: #3d7aed;
+  --comic-cyan: #00e5ff;
+  --comic-magenta: #ff2d95;
+  --comic-purple: #a855f7;
+  --comic-orange: #ff6b35;
+  --comic-green: #39ff14;
+  
+  /* Glitch RGB offsets */
+  --glitch-r: #ff0040;
+  --glitch-g: #00ff90;
+  --glitch-b: #4040ff;
+
+  /* Fonts */
+  --font-comic: 'Bangers', cursive;
+  --font-comic-body: 'Comic Neue', cursive;
+  --font-marker: 'Permanent Marker', cursive;
+
+  --background: #0a0a0a;
+  --foreground: #f5f0e8;
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --font-sans: var(--font-comic-body);
+  --font-mono: var(--font-comic);
+}
+
+/* ---- Base ---- */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  background: var(--comic-black);
+  color: var(--comic-white);
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+}
+
+body {
+  background: var(--comic-black);
+  color: var(--comic-white);
+  font-family: 'Comic Neue', cursive;
+  overflow-x: hidden;
+}
+
+/* Smooth scroll container for Lenis */
+html.lenis, html.lenis body {
+  height: auto;
+}
+
+.lenis.lenis-smooth {
+  scroll-behavior: auto !important;
+}
+
+.lenis.lenis-smooth [data-lenis-prevent] {
+  overscroll-behavior: contain;
+}
+
+.lenis.lenis-stopped {
+  overflow: hidden;
+}
+
+/* ============================================
+   HALFTONE OVERLAY
+   ============================================ */
+.halftone-overlay {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 9999;
+  mix-blend-mode: multiply;
+  opacity: 0.03;
+  background-image: radial-gradient(circle, #000 1px, transparent 1px);
+  background-size: 4px 4px;
+}
+
+/* ============================================
+   GLITCH KEYFRAMES
+   ============================================ */
+@keyframes glitchShift {
+  0%, 100% { transform: translate(0); }
+  10% { transform: translate(-3px, 2px); }
+  20% { transform: translate(3px, -1px); }
+  30% { transform: translate(-2px, -3px); }
+  40% { transform: translate(1px, 3px); }
+  50% { transform: translate(-1px, -2px); }
+  60% { transform: translate(4px, 1px); }
+  70% { transform: translate(-3px, -1px); }
+  80% { transform: translate(2px, 2px); }
+  90% { transform: translate(-1px, -3px); }
+}
+
+@keyframes glitchSlice {
+  0%, 100% { clip-path: inset(0 0 100% 0); }
+  5% { clip-path: inset(20% 0 60% 0); }
+  10% { clip-path: inset(50% 0 20% 0); }
+  15% { clip-path: inset(10% 0 70% 0); }
+  20% { clip-path: inset(80% 0 5% 0); }
+  25% { clip-path: inset(30% 0 40% 0); }
+  30% { clip-path: inset(0 0 100% 0); }
+}
+
+@keyframes rgbSplit {
+  0%, 100% {
+    text-shadow: 0 0 transparent, 0 0 transparent;
+  }
+  25% {
+    text-shadow: -3px -1px var(--glitch-r), 3px 1px var(--glitch-b);
+  }
+  50% {
+    text-shadow: 2px 3px var(--glitch-r), -2px -3px var(--glitch-g);
+  }
+  75% {
+    text-shadow: -4px 2px var(--glitch-b), 4px -2px var(--glitch-r);
+  }
+}
+
+@keyframes scanline {
+  0% { transform: translateY(-100%); }
+  100% { transform: translateY(100vh); }
+}
+
+@keyframes flicker {
+  0%, 100% { opacity: 1; }
+  92% { opacity: 1; }
+  93% { opacity: 0.8; }
+  94% { opacity: 1; }
+  96% { opacity: 0.6; }
+  97% { opacity: 1; }
+}
+
+@keyframes comicPop {
+  0% { transform: scale(0) rotate(-12deg); opacity: 0; }
+  50% { transform: scale(1.2) rotate(3deg); opacity: 1; }
+  70% { transform: scale(0.9) rotate(-1deg); }
+  100% { transform: scale(1) rotate(0deg); opacity: 1; }
+}
+
+@keyframes elasticIn {
+  0% { transform: scale(0); opacity: 0; }
+  40% { transform: scale(1.15); }
+  60% { transform: scale(0.95); }
+  80% { transform: scale(1.05); }
+  100% { transform: scale(1); opacity: 1; }
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0px) rotate(0deg); }
+  25% { transform: translateY(-6px) rotate(0.5deg); }
+  75% { transform: translateY(4px) rotate(-0.5deg); }
+}
+
+@keyframes pulseGlow {
+  0%, 100% { filter: drop-shadow(0 0 8px rgba(255,43,74,0.3)); }
+  50% { filter: drop-shadow(0 0 20px rgba(255,43,74,0.7)); }
+}
+
+@keyframes borderDash {
+  0% { stroke-dashoffset: 0; }
+  100% { stroke-dashoffset: 100; }
+}
+
+/* ============================================
+   COMIC TYPOGRAPHY
+   ============================================ */
+.comic-title {
+  font-family: 'Bangers', cursive;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  line-height: 1;
+}
+
+.comic-body {
+  font-family: 'Comic Neue', cursive;
+  line-height: 1.5;
+}
+
+.comic-marker {
+  font-family: 'Permanent Marker', cursive;
+}
+
+/* ============================================
+   RGB GLITCH TEXT
+   ============================================ */
+.glitch-text {
+  position: relative;
+}
+
+.glitch-text::before,
+.glitch-text::after {
+  content: attr(data-text);
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.glitch-text::before {
+  color: var(--glitch-r);
+  animation: glitchShift 3s infinite linear alternate-reverse;
+  clip-path: polygon(0 0, 100% 0, 100% 45%, 0 45%);
+  transform: translate(-3px, -1px);
+  opacity: 0.8;
+}
+
+.glitch-text::after {
+  color: var(--glitch-b);
+  animation: glitchShift 2s infinite linear alternate;
+  clip-path: polygon(0 55%, 100% 55%, 100% 100%, 0 100%);
+  transform: translate(3px, 1px);
+  opacity: 0.8;
+}
+
+/* ============================================
+   SCROLLBAR STYLING
+   ============================================ */
+::-webkit-scrollbar {
+  width: 4px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--comic-black);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--comic-red);
+  border-radius: 2px;
+}
+
+/* ============================================
+   PERFORMANCE: will-change hints
+   ============================================ */
+.will-animate {
+  will-change: transform, opacity;
+}
+
+.gpu-accelerated {
+  transform: translateZ(0);
+  backface-visibility: hidden;
+}
