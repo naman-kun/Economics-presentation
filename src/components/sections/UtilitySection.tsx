@@ -3,6 +3,7 @@
 import React, { useEffect, useRef } from "react";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
+import SpiderWebTransition from "@/components/effects/SpiderWebTransition";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -39,6 +40,8 @@ export default function UtilitySection() {
             });
 
             master
+                // ═══ ENTRANCE ANIMATIONS (0.00 → 0.62) ═══
+
                 // 0. Background burst zooms in immediately (same style as Hero)
                 .fromTo("#utility-burst",
                     { scale: 3, opacity: 0, rotation: 25 },
@@ -52,58 +55,109 @@ export default function UtilitySection() {
                 .fromTo("#utility-title",
                     { scale: 0, opacity: 0, y: -50, rotation: -5 },
                     { scale: 1, opacity: 1, y: 0, rotation: 0, duration: 0.08, ease: "back.out(2)" },
-                    0.10
+                    0.08
                 )
 
                 // 2. THINK cluster
                 .fromTo("#utility-think-group",
                     { scale: 0, opacity: 0, transformOrigin: "center center" },
                     { scale: 1, opacity: 1, duration: 0.08, ease: "power3.out" },
-                    0.20
+                    0.16
                 )
 
                 // 3. Yellow Box crashing in
                 .fromTo("#utility-yellow-box",
                     { x: -100, opacity: 0, rotation: -10 },
                     { x: 0, opacity: 1, rotation: -2, duration: 0.08, ease: "back.out(2)" },
-                    0.32
+                    0.25
                 )
                 // ZAP graphic bursts
                 .fromTo("#utility-zap",
                     { scale: 0, opacity: 0, rotation: -45, transformOrigin: "center center" },
                     { scale: 1.2, opacity: 1, rotation: 12, duration: 0.06, ease: "elastic.out(1.2, 0.3)" },
-                    0.42
+                    0.32
                 )
-                .to("#utility-zap", { scale: 1, duration: 0.04, ease: "power2.inOut" }, 0.49)
+                .to("#utility-zap", { scale: 1, duration: 0.04, ease: "power2.inOut" }, 0.39)
 
                 // 4. Retro Box drops in
                 .fromTo("#utility-retro-box",
                     { x: 100, y: -50, opacity: 0, rotation: 10 },
                     { x: 0, y: 0, opacity: 1, rotation: 3, duration: 0.08, ease: "back.out(1.5)" },
-                    0.54
+                    0.40
                 )
 
                 // 5. POW graphic
                 .fromTo("#utility-pow-group",
                     { scale: 0, opacity: 0, rotation: 35, transformOrigin: "center center" },
                     { scale: 1.05, opacity: 1, rotation: 4, duration: 0.09, ease: "elastic.out(0.9, 0.4)" },
-                    0.66
+                    0.48
                 )
-                .to("#utility-pow-group", { scale: 1, duration: 0.04, ease: "power2.inOut" }, 0.74)
+                .to("#utility-pow-group", { scale: 1, duration: 0.04, ease: "power2.inOut" }, 0.56)
 
                 // 5b. Sneaker drops in
                 .fromTo("#utility-sneaker",
                     { y: -60, opacity: 0, rotation: 20 },
                     { y: 0, opacity: 1, rotation: 12, duration: 0.08, ease: "back.out(1.8)" },
-                    0.78
+                    0.55
                 )
 
                 // 6. Sticky Note drops
                 .fromTo("#utility-sticky-note",
                     { y: 100, opacity: 0, rotation: -15 },
                     { y: 0, opacity: 1, rotation: 3, duration: 0.08, ease: "back.out(2)" },
-                    0.90
-                );
+                    0.62
+                )
+
+                // ═══ EXIT TRANSITION (0.72 → 1.0) — Spider-Web Pull ═══
+
+                // Spider web fades in
+                .to("#utility-web-transition", {
+                    opacity: 1, scale: 0.8, duration: 0.06, ease: "power2.out",
+                }, 0.77)
+
+                // Web threads draw in (stroke-dashoffset animation)
+                .to("#utility-web-transition .web-thread", {
+                    strokeDashoffset: 0, duration: 0.08, stagger: 0.002, ease: "power2.inOut",
+                }, 0.77)
+                .to("#utility-web-transition .web-ring", {
+                    strokeDashoffset: 0, duration: 0.08, stagger: 0.005, ease: "power2.inOut",
+                }, 0.80)
+
+                // Content pulls toward center and vanishes
+                .to("#utility-title", {
+                    scale: 0.7, y: 30, opacity: 0, duration: 0.08, ease: "power3.in",
+                }, 0.74)
+                .to("#utility-think-group", {
+                    scale: 0.5, opacity: 0, duration: 0.06, ease: "power3.in",
+                }, 0.75)
+                .to("#utility-yellow-box", {
+                    x: -100, opacity: 0, scale: 0.8, duration: 0.06, ease: "power3.in",
+                }, 0.76)
+                .to("#utility-zap", { opacity: 0, scale: 0, duration: 0.05 }, 0.76)
+                .to("#utility-retro-box", {
+                    x: 100, opacity: 0, scale: 0.8, duration: 0.06, ease: "power3.in",
+                }, 0.77)
+                .to("#utility-sneaker", {
+                    y: -60, opacity: 0, scale: 0.7, duration: 0.06, ease: "power3.in",
+                }, 0.77)
+                .to("#utility-pow-group", { opacity: 0, scale: 0, duration: 0.05 }, 0.76)
+                .to("#utility-sticky-note", {
+                    y: 60, opacity: 0, scale: 0.7, duration: 0.06, ease: "power3.in",
+                }, 0.78)
+
+                // Web expands and fades to black
+                .to("#utility-web-transition", {
+                    scale: 2.5, opacity: 0, duration: 0.10, ease: "power2.in",
+                }, 0.84)
+
+                // Burst fades
+                .to("#utility-burst", { opacity: 0, scale: 1.3, duration: 0.08 }, 0.84)
+
+                // Halftone fades
+                .to("#utility-halftone", { opacity: 0, duration: 0.06 }, 0.84)
+
+                // Final fade to black
+                .to("#utility-pin-container", { opacity: 0, duration: 0.03 }, 0.97);
         }, sectionRef);
 
         return () => ctx.revert();
@@ -114,7 +168,7 @@ export default function UtilitySection() {
             id="utility-section-main"
             ref={sectionRef}
             className="relative w-full"
-            style={{ height: "750vh" }}
+            style={{ height: "900vh" }}
         >
             <div
                 id="utility-pin-container"
@@ -128,7 +182,7 @@ export default function UtilitySection() {
                         alt=""
                         className="w-[140%] max-w-none"
                         style={{
-                            filter: "contrast(1.6) brightness(1.304) saturate(0.8)",
+                            filter: "contrast(1.12) brightness(1.304) saturate(0.8)",
                             mixBlendMode: "screen",
                             imageRendering: "high-quality" as any,
                             willChange: "transform",
@@ -269,6 +323,10 @@ export default function UtilitySection() {
                     </div>
 
                 </div>
+
+                {/* ── Spider web transition overlay ── */}
+                <SpiderWebTransition id="utility-web-transition" />
+
             </div>
         </section>
     );
