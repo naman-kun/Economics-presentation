@@ -16,6 +16,7 @@ import ICGraphSection from "@/components/sections/ICGraphSection";
 import PCCSection from "@/components/sections/PCCSection";
 import PCCMeaningSection from "@/components/sections/PCCMeaningSection";
 import IncomeEffectSection from "@/components/sections/IncomeEffectSection";
+import CreditsSection from "@/components/sections/CreditsSection";
 
 export default function Home() {
   useLenis();
@@ -37,6 +38,7 @@ export default function Home() {
       <PCCSection />
       <PCCMeaningSection />
       <IncomeEffectSection />
+      <CreditsSection />
     </div>
   );
 }
