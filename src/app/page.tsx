@@ -9,6 +9,7 @@ import OrdinalUtilitySection from "@/components/sections/OrdinalUtilitySection";
 import MarginalUtilitySection from "@/components/sections/MarginalUtilitySection";
 import TotalUtilitySection from "@/components/sections/TotalUtilitySection";
 import DiminishingMUSection from "@/components/sections/DiminishingMUSection";
+import RecapSection from "@/components/sections/RecapSection";
 
 export default function Home() {
   useLenis();
@@ -23,6 +24,7 @@ export default function Home() {
       <MarginalUtilitySection />
       <TotalUtilitySection />
       <DiminishingMUSection />
+      <RecapSection />
     </div>
   );
 }
