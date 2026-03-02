@@ -9,6 +9,7 @@ import OrdinalUtilitySection from "@/components/sections/OrdinalUtilitySection";
 import MarginalUtilitySection from "@/components/sections/MarginalUtilitySection";
 import TotalUtilitySection from "@/components/sections/TotalUtilitySection";
 import DiminishingMUSection from "@/components/sections/DiminishingMUSection";
+import DiminishingMUVideoSection from "@/components/sections/DiminishingMUVideoSection";
 import IndifferenceCurveSection from "@/components/sections/IndifferenceCurveSection";
 import ICDontCrossSection from "@/components/sections/ICDontCrossSection";
 import ICGraphSection from "@/components/sections/ICGraphSection";
@@ -29,6 +30,7 @@ export default function Home() {
       <MarginalUtilitySection />
       <TotalUtilitySection />
       <DiminishingMUSection />
+      <DiminishingMUVideoSection />
       <IndifferenceCurveSection />
       <ICDontCrossSection />
       <ICGraphSection />
