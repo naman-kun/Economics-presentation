@@ -160,13 +160,13 @@ export default function CardinalUtilitySection() {
                     </div>
 
                     {/* ══ 3 PANELS ROW ══ */}
-                    <div className="w-full flex-1 flex flex-col md:flex-row items-center justify-center gap-0 md:-space-x-4 lg:-space-x-8 mb-2 md:mb-4 px-2 md:px-0">
+                    <div className="w-full flex-1 min-h-0 flex flex-col md:flex-row items-center justify-center gap-0 md:-space-x-4 lg:-space-x-8 mb-2 md:mb-4 px-2 md:px-0">
                         {/* 1. Joy-o-meter */}
                         <div id="cardinal-joy" className="w-[80%] md:w-[35%] relative flex items-center justify-center transform -rotate-1 z-10 drop-shadow-[4px_4px_0_rgba(0,0,0,0.7)] hover:-translate-y-2 transition-transform duration-300">
                             <img
                                 src="/assets/joy o meter.png"
                                 alt="Joy-O-Meter Satisfaction is numbers"
-                                className="w-full h-auto object-contain"
+                                className="w-full h-auto object-contain max-h-[45vh] lg:max-h-[50vh]"
                             />
                         </div>
 
@@ -175,7 +175,7 @@ export default function CardinalUtilitySection() {
                             <img
                                 src="/assets/def.png"
                                 alt="Definition of Utils"
-                                className="w-full h-auto object-contain"
+                                className="w-full h-auto object-contain max-h-[45vh] lg:max-h-[50vh]"
                             />
                         </div>
 
@@ -184,7 +184,7 @@ export default function CardinalUtilitySection() {
                             <img
                                 src="/assets/util.png"
                                 alt="The Util Concept and Example"
-                                className="w-full h-auto object-contain"
+                                className="w-full h-auto object-contain max-h-[45vh] lg:max-h-[50vh]"
                             />
                         </div>
                     </div>
@@ -194,7 +194,7 @@ export default function CardinalUtilitySection() {
                         <img
                             src="/assets/In short.png"
                             alt="In Short: Cardinal utility says happiness is a count!"
-                            className="w-full h-auto object-contain"
+                            className="w-full h-auto object-contain max-h-[18vh] lg:max-h-[22vh]"
                         />
                     </div>
                 </div>

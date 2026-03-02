@@ -5,6 +5,10 @@ import HeroSection from "@/components/sections/HeroSection";
 import UtilitySection from "@/components/sections/UtilitySection";
 import TypesOfUtilitySection from "@/components/sections/TypesOfUtilitySection";
 import CardinalUtilitySection from "@/components/sections/CardinalUtilitySection";
+import OrdinalUtilitySection from "@/components/sections/OrdinalUtilitySection";
+import MarginalUtilitySection from "@/components/sections/MarginalUtilitySection";
+import TotalUtilitySection from "@/components/sections/TotalUtilitySection";
+import DiminishingMUSection from "@/components/sections/DiminishingMUSection";
 
 export default function Home() {
   useLenis();
@@ -15,6 +19,10 @@ export default function Home() {
       <UtilitySection />
       <TypesOfUtilitySection />
       <CardinalUtilitySection />
+      <OrdinalUtilitySection />
+      <MarginalUtilitySection />
+      <TotalUtilitySection />
+      <DiminishingMUSection />
     </div>
   );
 }
