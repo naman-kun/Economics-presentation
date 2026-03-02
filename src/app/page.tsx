@@ -9,6 +9,12 @@ import OrdinalUtilitySection from "@/components/sections/OrdinalUtilitySection";
 import MarginalUtilitySection from "@/components/sections/MarginalUtilitySection";
 import TotalUtilitySection from "@/components/sections/TotalUtilitySection";
 import DiminishingMUSection from "@/components/sections/DiminishingMUSection";
+import IndifferenceCurveSection from "@/components/sections/IndifferenceCurveSection";
+import ICDontCrossSection from "@/components/sections/ICDontCrossSection";
+import ICGraphSection from "@/components/sections/ICGraphSection";
+import PCCSection from "@/components/sections/PCCSection";
+import PCCMeaningSection from "@/components/sections/PCCMeaningSection";
+import IncomeEffectSection from "@/components/sections/IncomeEffectSection";
 
 export default function Home() {
   useLenis();
@@ -23,6 +29,12 @@ export default function Home() {
       <MarginalUtilitySection />
       <TotalUtilitySection />
       <DiminishingMUSection />
+      <IndifferenceCurveSection />
+      <ICDontCrossSection />
+      <ICGraphSection />
+      <PCCSection />
+      <PCCMeaningSection />
+      <IncomeEffectSection />
     </div>
   );
 }
